@@ -16,10 +16,10 @@
 		location="classpath:datasource.properties" />
 
 	<context:component-scan
-		base-package="sopra.formation.repository" />
+		base-package="sopra.formation.monRdv.repository" />
 
 	<!-- Scan des JpaRepositories -->
-	<jpa:repositories base-package="sopra.formation.repository" />
+	<jpa:repositories base-package="sopra.formation.monRdv.repository" />
 
 	<!--On crée la DataSource avec Pooling de connection (dbcp) -->
 	<bean id="dataSource"
@@ -35,7 +35,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="sopra.formation.model" /> <!-- Package qui contient les @Entity (JPA) -->
+		<property name="packagesToScan" value="sopra.formation.monRdv.model" /> <!-- Package qui contient les @Entity (JPA) -->
 		<!--On précise le provider ... -->
 		<property name="jpaVendorAdapter">
 			<bean
