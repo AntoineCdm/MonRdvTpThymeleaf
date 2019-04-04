@@ -52,11 +52,11 @@ public class LoginController {
 	}
 	
 	@PostMapping("/sidentifier")
-	public String sidentifier(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
+	public String sidentifier(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result, HttpSession session) {
 		if(result.hasErrors()) {
 			return "login";
 		}
-		
+		session.setAttribute("type", "admin");
 		//insérer ici ce qu'il faut pour récupérer compte
 
 		
