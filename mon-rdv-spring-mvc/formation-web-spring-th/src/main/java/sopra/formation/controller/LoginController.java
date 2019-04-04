@@ -1,5 +1,6 @@
 package sopra.formation.controller;
 
+import java.io.Console;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -54,7 +55,10 @@ public class LoginController {
 		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
 		
 		for (Utilisateur user : utilisateurs) {
-			System.out.println(user.toString());
+			System.out.println(user.getUsername());
+			System.out.println(utilisateur.getUsername());
+			System.out.println(user.getMdp());
+			System.out.println(utilisateur.getMdp());
 			
 			if(utilisateur.getUsername() == user.getUsername() && utilisateur.getMdp() == user.getMdp()) {
 				session.setAttribute("type", "admin");
@@ -63,8 +67,7 @@ public class LoginController {
 			}
 		}
 
-		//insérer ici ce qu'il faut pour récupérer compte
-		return "login";
+		return "login/list";
 		
 	}
 
