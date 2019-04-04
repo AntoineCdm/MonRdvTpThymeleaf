@@ -26,7 +26,7 @@ public class Praticien {
 	@Size(min = 3, max=40, message="L'intitule doit comprendre au minimum 3 caractères (100 max)")
 	private String nom;
 	@Column(length = 100)
-	@NotEmpty(message="Veuillez renseigner votre nom")
+	@NotEmpty(message="Veuillez renseigner votre prenom")
 	@Size(min = 3, max=40, message="L'intitule doit comprendre au minimum 3 caractères (100 max)")
 	private String prenom;
 	@Column(length = 255)
