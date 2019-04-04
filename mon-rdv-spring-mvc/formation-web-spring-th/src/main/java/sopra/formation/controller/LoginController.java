@@ -1,5 +1,6 @@
 package sopra.formation.controller;
 
+import java.io.Console;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -31,16 +32,24 @@ public class LoginController {
 
 	@GetMapping(path = { "/", "/list" })
 	public String list(Model model) {
-		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-
-		model.addAttribute("mesUtilisateurs", utilisateurs);
+	
+		model.addAttribute("monUtilisateur", new Utilisateur());
 
 		return "login/list";
 	}
+	
+	@GetMapping(path ="/logout")
+	public String logout(Model model, HttpSession session) {
+		
+		session.setAttribute("type", null);
 
+		return "redirect:/home";
+	}
+	
 	@PostMapping("/sinscrire")
 	public String sinscrire(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
-		if (result.hasErrors()) {
+		
+		if(result.hasErrors()) {
 			return "login";
 		}
 
@@ -51,21 +60,27 @@ public class LoginController {
 
 	@PostMapping("/sidentifier")
 	public String sidentifier(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result, HttpSession session) {
-		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
+		if (result.hasErrors()) {			
+			return "login/list";
+		}
 		
+		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
 		for (Utilisateur user : utilisateurs) {
-			System.out.println(user.toString());
-			
-			if(utilisateur.getUsername() == user.getUsername() && utilisateur.getMdp() == user.getMdp()) {
-				session.setAttribute("type", "admin");
 
+			if (utilisateur.getUsername().contentEquals(user.getUsername())
+					&& utilisateur.getMdp().contentEquals(user.getMdp())) {
+
+		
+				session.setAttribute("type", user.getType());
+				session.setAttribute("username", user.getUsername());
+				session.setMaxInactiveInterval(600);
 				return "redirect:/home";
 			}
 		}
-
-		//insérer ici ce qu'il faut pour récupérer compte
-		return "login";
 		
+
+		return "login/list";
+
 	}
 
 }

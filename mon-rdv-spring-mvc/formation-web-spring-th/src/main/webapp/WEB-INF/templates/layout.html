@@ -18,25 +18,25 @@
 		<nav
 			class="navbar navbar-title navbar-light bg-light navbar-expand-md fixed-top">
 			<!-- Brand/logo -->
-			<a class="navbar-brand" href="Index.html"> <img
+			<a class="navbar-brand" href="home"> <img
 				src="images/icon-mon-rdv.png" width="30" height="30"
 				class="d-inline-block align-top" alt=""> Mon-rdv
 			</a>
 
 			<!-- Links -->
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item"><a class="nav-link"
-					href="AdministrateurProfil.html"><b>Espace Administrateur</b></a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="PraticienProfil.html"><b>Espace Praticien</b></a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="PatientRdvVenir.html"><b>Espace Patient</b></a></li>
-				<li class="nav-item"><a class="nav-link" href="login" ><b>Connexion</b></a></li>
+				<li class="nav-item"><b><a class="nav-link"
+					href="AdministrateurProfil.html">Espace Administrateur</a></b></li>
+				<li class="nav-item"><b><a class="nav-link"
+					href="PraticienProfil.html">Espace Praticien</a></b></li>
+				<li class="nav-item"><b><a class="nav-link"
+					href="PatientRdvVenir.html" >Espace Patient</a></b></li>
+				<li class="nav-item"><b><a class="nav-link" th:href="${(session?.type=='admin')?'login/logout':'login'}" th:text="${(session?.type=='admin')?'Deconnexion':'Connexion'}"></a></b></li>
 			</ul>
 		</nav>
 	</header>
 	<div class="mt-5">
-		<div class="mt-5">
+		<div>
 			<section layout:fragment="content" class="mt-5">
 				<p>Page content goes here</p>
 			</section>
