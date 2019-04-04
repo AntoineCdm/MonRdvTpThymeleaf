@@ -30,7 +30,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("pratician-list")
-	public String getPratician(Model model) {
+	public String getPraticien(Model model) {
 		
 		List<Praticien> praticiens = praticienRepo.findAll();
 
