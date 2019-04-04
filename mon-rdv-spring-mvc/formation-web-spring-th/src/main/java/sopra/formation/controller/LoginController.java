@@ -59,23 +59,25 @@ public class LoginController {
 	}
 
 	@PostMapping("/sidentifier")
-	public String sidentifier(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result,
-			HttpSession session) {
+	public String sidentifier(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result, HttpSession session) {
+		if (result.hasErrors()) {			
+			return "login/list";
+		}
+		
 		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-
 		for (Utilisateur user : utilisateurs) {
 
 			if (utilisateur.getUsername().contentEquals(user.getUsername())
 					&& utilisateur.getMdp().contentEquals(user.getMdp())) {
 
-				session.setAttribute("type", "admin");
-
+		
+				session.setAttribute("type", user.getType());
+				session.setAttribute("username", user.getUsername());
+				session.setMaxInactiveInterval(600);
 				return "redirect:/home";
 			}
 		}
-		session.setAttribute("type", "admin");
-		session.setMaxInactiveInterval(600);
-		//insérer ici ce qu'il faut pour récupérer compte
+		
 
 		return "login/list";
 
