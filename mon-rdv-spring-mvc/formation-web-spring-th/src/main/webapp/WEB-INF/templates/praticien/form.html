@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html">
+<head>
+<meta charset="UTF-8">
+<title>Praticien</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div id="praticienEdit" class="card">
+			<form th:action="@{/praticien/save}" method="post">
+				<input type="hidden" name="id" th:value="${monPraticien.id}">
+				<input type="hidden" name="version" th:value="${monPraticien.version}">
+				<div class="card-header">
+					<h5>Espace personnel</h5>
+				</div>
+				<div class="card-body">
+
+					<div class="form-group">
+						<label for="nom">Nom:</label> <input type="text"
+							class="form-control" id="nom" name="nom"
+							th:value="${monPraticien.nom}"> <small
+							class="form-text text-danger" th:errors="${monPraticien.nom}"></small>
+					</div>
+					<div class="form-group">
+						<label for="prenom">Prenom:</label> <input type="text"
+							class="form-control" id="prenom" name="prenom"
+							th:value="${monPraticien.prenom}"><small
+							class="form-text text-danger" th:errors="${monPraticien.prenom}"></small>
+					</div>
+					<div class="form-group">
+						<label for="age">Specialite:</label> <input type="number"
+							class="form-control" id="mail" name="mail"
+							th:value="${monPraticien.age}">
+					</div>
+					<div class="form-group">
+						<label for="mail">Mail:</label> <input type="text"
+							class="form-control" id="mail" name="mail"
+							th:value="${monPraticien.mail}"><small
+							class="form-text text-danger" th:errors="${monPraticien.mail}"></small>
+					</div>
+					<div class="form-group">
+						<label for="tel">Tel:</label> <input type="number"
+							class="form-control" id="tel" name="tel"
+							th:value="${monPraticien.tel}">
+					</div>
+				</div>
+				<div class="card-footer text-right">
+					<div class="btn-group ">
+						<button type="submit" class="btn btn-success">
+							<i class="far fa-check-square fa-2x"></i>
+						</button>
+						<a th:href="@{/praticien/cancel}" class="btn btn-warning text-white">
+							<i class="far fa-window-close fa-2x"></i>
+						</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

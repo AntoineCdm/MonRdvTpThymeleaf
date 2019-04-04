@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html">
+<head>
+<meta charset="UTF-8">
+<title>Patient</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="card">
+			<div class="card-header bg-primary text-white">
+				<h2>Compte personnel</h2>
+			</div>
+			<div class="card-body">
+				<table id="patientTab" class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Age</th>
+							<th>Mail</th>
+							<th>Tel</th>
+							<th>Numero de carte Vitale</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="pat : ${mesPatients}">
+							<td th:text="${pat.id}"></td>
+							<td>[[${pat.nom}]]</td>
+							<td>[[${pat.prenom}]]</td>
+							<td>[[${pat.age}]]</td>
+							<td>[[${pat.mail}]]</td>
+							<td>[[${pat.tel}]]</td>
+							<td>[[${pat.numeroCarteVitale}]]</td>
+							<td><div class='btn-group'>
+									<a th:href="@{/patient/edit(id=${pat.id})}"
+										class='btn btn-primary'> <i class='fas fa-edit'></i>
+									</a> <a th:href="@{/patient/remove(id=${pat.id})}"
+										class='btn btn-danger'> <i class='far fa-trash-alt'></i>
+									</a>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="card-footer">
+				<a th:href="@{/patient/add}" class="btn btn-primary"> <i
+					class="fas fa-plus-square fa-2x"></i>
+				</a>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

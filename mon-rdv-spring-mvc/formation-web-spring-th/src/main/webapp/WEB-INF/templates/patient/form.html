@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html">
+<head>
+<meta charset="UTF-8">
+<title>Patient</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div id="patientEdit" class="card">
+			<form th:action="@{/patient/save}" method="post">
+				<input type="hidden" name="id" th:value="${monPatient.id}">
+				<input type="hidden" name="version" th:value="${monPatient.version}">
+				<div class="card-header">
+					<h5>Espace personnel</h5>
+				</div>
+				<div class="card-body">
+
+					<div class="form-group">
+						<label for="nom">Nom:</label> <input type="text"
+							class="form-control" id="nom" name="nom"
+							th:value="${monPatient.nom}"> <small
+							class="form-text text-danger" th:errors="${monPatient.nom}"></small>
+					</div>
+					<div class="form-group">
+						<label for="prenom">Prenom:</label> <input type="text"
+							class="form-control" id="prenom" name="prenom"
+							th:value="${monPatient.prenom}"><small
+							class="form-text text-danger" th:errors="${monPatient.prenom}"></small>
+					</div>
+					<div class="form-group">
+						<label for="age">Age:</label> <input type="number"
+							class="form-control" id="mail" name="mail"
+							th:value="${monPatient.age}">
+					</div>
+					<div class="form-group">
+						<label for="mail">Mail:</label> <input type="text"
+							class="form-control" id="mail" name="mail"
+							th:value="${monPatient.mail}"><small
+							class="form-text text-danger" th:errors="${monPatient.mail}"></small>
+					</div>
+					<div class="form-group">
+						<label for="tel">Tel:</label> <input type="number"
+							class="form-control" id="tel" name="tel"
+							th:value="${monPatient.tel}">
+					</div>
+					<div class="form-group">
+						<label for="numeroCarteVitale">Numero carte vitale:</label> <input
+							type="number" class="form-control" id="numeroCarteVitale"
+							name="numeroCarteVitale"
+							th:value="${monPatient.numeroCarteVitale}"><small
+							class="form-text text-danger" th:errors="${monPatient.numeroCarteVitale}"></small>
+					</div>
+				</div>
+				<div class="card-footer text-right">
+					<div class="btn-group ">
+						<button type="submit" class="btn btn-success">
+							<i class="far fa-check-square fa-2x"></i>
+						</button>
+						<a th:href="@{/patient/cancel}" class="btn btn-warning text-white">
+							<i class="far fa-window-close fa-2x"></i>
+						</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
