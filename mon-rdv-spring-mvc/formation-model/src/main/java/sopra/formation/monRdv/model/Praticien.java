@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -22,20 +23,21 @@ public class Praticien {
 	@Version
 	private int version;
 	@Column(length = 100)
-	@NotEmpty(message="Veuillez renseigner votre nom")
-	@Size(min = 3, max=40, message="L'intitule doit comprendre au minimum 3 caractères (100 max)")
+	@NotEmpty(message = "Veuillez renseigner votre nom")
+	@Size(min = 3, max = 40, message = "L'intitule doit comprendre au minimum 3 caractères (100 max)")
 	private String nom;
 	@Column(length = 100)
-	@NotEmpty(message="Veuillez renseigner votre prenom")
-	@Size(min = 3, max=40, message="L'intitule doit comprendre au minimum 3 caractères (100 max)")
+	@NotEmpty(message = "Veuillez renseigner votre prenom")
+	@Size(min = 3, max = 40, message = "L'intitule doit comprendre au minimum 3 caractères (100 max)")
 	private String prenom;
 	@Column(length = 255)
-	@NotEmpty(message="Champ requis")
+	@NotEmpty(message = "Champ requis")
 	private String mail;
 	@Column(length = 15)
-	@NotEmpty(message="Champ requis")
+	@NotEmpty(message = "Champ requis")
 	private String tel;
 	@Column(name = "duree_creneau")
+	@Min(value = 1, message = "Créneau minimum de 1mn") // pour les int pas de NotEmpty. Que @Min ou @Max
 	private int dureeCreneau;
 	@OneToOne
 	@JoinColumn(name = "utilisateur_id")

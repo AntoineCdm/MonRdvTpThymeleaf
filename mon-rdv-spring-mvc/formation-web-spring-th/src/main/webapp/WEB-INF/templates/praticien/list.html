@@ -19,10 +19,9 @@
 							<th>#</th>
 							<th>Nom</th>
 							<th>Prenom</th>
-							<th>Experience</th>
 							<th>Mail</th>
 							<th>Tel</th>
-							<th></th>
+							<th>Duree creneau</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -30,9 +29,9 @@
 							<td th:text="${pat.id}"></td>
 							<td>[[${pat.nom}]]</td>
 							<td>[[${pat.prenom}]]</td>
-							<td>[[${pat.experience}]]</td>
 							<td>[[${pat.mail}]]</td>
 							<td>[[${pat.tel}]]</td>
+							<td>[[${pat.dureeCreneau}]]</td>
 							<td><div class='btn-group'>
 									<a th:href="@{/praticien/edit(id=${pat.id})}"
 										class='btn btn-primary'> <i class='fas fa-edit'></i>
