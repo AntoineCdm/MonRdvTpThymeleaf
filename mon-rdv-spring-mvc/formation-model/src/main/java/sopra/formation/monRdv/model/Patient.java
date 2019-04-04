@@ -30,13 +30,13 @@ public class Patient {
 	private String prenom;
 	private int age;
 	@Column(length = 255)
-	private String mail;
-	@NotEmpty(message="Le nom est obligatoire")
+	@NotEmpty(message="Champ requis")
 	@Size(min = 3, max=100, message="L'intitule doit comprendre au minimum 3 caractères (100 max)")
+	private String mail;
 	@Column(length = 20)
 	private String tel;
 	@Column(name = "numero_carte_vitale", length = 30)
-	@NotEmpty(message="Le nom est obligatoire")
+	@NotEmpty(message="Champ requis")
 	private String numeroCarteVitale;
 	private boolean principal;
 	@ManyToOne
