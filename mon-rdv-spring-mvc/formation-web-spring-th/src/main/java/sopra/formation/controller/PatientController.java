@@ -58,8 +58,8 @@ import sopra.formation.monRdv.repository.IPatient;
 		}
 
 		@PostMapping("/save")
-		public String save(@Valid @ModelAttribute("monPatient") Patient patient, BindingResult result) {
-			if (result.hasErrors()) {
+		public String save(@Valid @ModelAttribute("monPatient") Patient patient, BindingResult result) { // indique au controller de vérifier sur monPatient est conforme au fomrulaire. 
+			if (result.hasErrors()) { // si il ne l'est pas affiche une erreur selon le th:error dans form
 				return "patient/form";
 			}
 
