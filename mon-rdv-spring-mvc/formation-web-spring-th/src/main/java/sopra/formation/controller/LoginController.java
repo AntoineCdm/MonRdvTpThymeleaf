@@ -2,6 +2,8 @@ package sopra.formation.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,16 +23,16 @@ public class LoginController {
 	
 	@GetMapping("")
 	public String defaut() {
-		return "redirect:/login";
+		return "redirect:/login/list";
 	}
 	
 	@GetMapping(path = { "/", "/list" })
-	public String list(Model model) {
+	public String list(Model model, HttpSession session) {
 		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
 
 		model.addAttribute("mesUtilisateurs", utilisateurs);
 
-		return "login";
+		return "login/list";
 	}
 
 }
