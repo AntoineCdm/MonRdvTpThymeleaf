@@ -55,7 +55,7 @@
 				</div>
 				<div class="col-md-6 login-form-2">
 					<h3>Mon compte</h3>
-					<form>
+					<form th:action="@{/login/sidentifier}" method="post">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Email"
 								value="" />
