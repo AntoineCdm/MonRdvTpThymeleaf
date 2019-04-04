@@ -36,7 +36,15 @@ public class LoginController {
 
 		return "login/list";
 	}
+	
+	@GetMapping(path ="/logout")
+	public String logout(Model model, HttpSession session) {
+		
+		session.setAttribute("type", null);
 
+		return "redirect:/home";
+	}
+	
 	@PostMapping("/sinscrire")
 	public String sinscrire(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
 		if (result.hasErrors()) {
@@ -63,6 +71,9 @@ public class LoginController {
 				return "redirect:/home";
 			}
 		}
+		session.setAttribute("type", "admin");
+		session.setMaxInactiveInterval(600);
+		//insérer ici ce qu'il faut pour récupérer compte
 
 		return "login/list";
 
