@@ -1,12 +1,12 @@
 package sopra.formation.controller;
 
-import java.util.List;
+
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,7 +26,7 @@ public class LoginController {
 	
 	@GetMapping("")
 	public String defaut() {
-		return "redirect:/login";
+		return "redirect:/login/login";
 	}
 	
 //	@GetMapping(path = { "/", "/list" })
@@ -41,7 +41,7 @@ public class LoginController {
 	@PostMapping("/sinscrire")
 	public String sinscrire(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
 		if(result.hasErrors()) {
-			return "login";
+			return "login/login";
 		}
 		
 		utilisateurRepo.save(utilisateur);
@@ -52,7 +52,7 @@ public class LoginController {
 	@PostMapping("/sidentifier")
 	public String sidentifier(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
 		if(result.hasErrors()) {
-			return "login";
+			return "login/login";
 		}
 		
 		//insérer ici ce qu'il faut pour récupérer compte
