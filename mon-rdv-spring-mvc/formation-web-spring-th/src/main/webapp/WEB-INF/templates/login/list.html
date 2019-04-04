@@ -57,12 +57,12 @@
 					<h3>Mon compte</h3>
 					<form th:action="@{/login/sidentifier}" method="post">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Email"
-								value="" />
+							<input type="text" class="form-control" placeholder="Identifiant" name="username"
+								 th:value="${monUtilisateur.username}"/>
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control"
-								placeholder="Mot de Passe" value="" />
+								placeholder="Mot de Passe" name="mdp" th:value="${monUtilisateur.mdp}"/>
 						</div>
 						<div class="form-group">
 							<input type="submit" class="btnSubmit" value="S'identifier" />

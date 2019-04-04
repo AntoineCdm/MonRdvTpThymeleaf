@@ -32,9 +32,7 @@ public class LoginController {
 
 	@GetMapping(path = { "/", "/list" })
 	public String list(Model model) {
-		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-
-		model.addAttribute("mesUtilisateurs", utilisateurs);
+		model.addAttribute("monUtilisateur", new Utilisateur());
 
 		return "login/list";
 	}
@@ -66,6 +64,12 @@ public class LoginController {
 		
 		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
 		for (Utilisateur user : utilisateurs) {
+
+			if (utilisateur.getUsername().contentEquals(user.getUsername())
+					&& utilisateur.getMdp().contentEquals(user.getMdp())) {
+
+				session.setAttribute("type", "admin");
+
 			System.out.println(user.getUsername());
 			System.out.println(utilisateur.getUsername());
 			System.out.println(user.getMdp());
@@ -81,7 +85,7 @@ public class LoginController {
 		
 
 		return "login/list";
-		
+
 	}
 
 }
