@@ -18,7 +18,7 @@
 		<nav
 			class="navbar navbar-title navbar-light bg-light navbar-expand-md fixed-top">
 			<!-- Brand/logo -->
-			<a class="navbar-brand" href="Index.html"> <img
+			<a class="navbar-brand" href="home"> <img
 				src="images/icon-mon-rdv.png" width="30" height="30"
 				class="d-inline-block align-top" alt=""> Mon-rdv
 			</a>
@@ -31,7 +31,7 @@
 					href="PraticienProfil.html">Espace Praticien</a></b></li>
 				<li class="nav-item"><b><a class="nav-link"
 					href="PatientRdvVenir.html" >Espace Patient</a></b></li>
-				<li class="nav-item"><b><a class="nav-link" th:href="${(session?.type=='admin')?'login/logout':'login'}" th:text="${(session?.type=='admin')?'Deconnexion':'Connexion'}"></a></b></li>
+				<li class="nav-item"><b><a class="nav-link" th:href="${(session?.type!=null)?'login/logout':'login'}" th:text="${(session?.type!=null)?'Deconnexion':'Connexion'}"></a></b></li>
 			</ul>
 		</nav>
 	</header>
