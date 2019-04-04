@@ -12,7 +12,6 @@ public class Test {
 	public String defaut() {
 		return "redirect:/test/list";
 	}
-
 	@GetMapping(path = { "/", "/list" })
 	public String list(Model model) {
 
