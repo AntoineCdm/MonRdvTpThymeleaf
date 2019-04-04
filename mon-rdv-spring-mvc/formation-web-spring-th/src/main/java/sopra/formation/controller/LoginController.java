@@ -2,12 +2,17 @@ package sopra.formation.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import sopra.formation.monRdv.model.Utilisateur;
@@ -26,13 +31,36 @@ public class LoginController {
 		return "redirect:/login/list";
 	}
 	
-	@GetMapping(path = { "/", "/list" })
-	public String list(Model model, HttpSession session) {
-		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
+//	@GetMapping(path = { "/", "/list" })
+//	public String list(Model model) {
+//		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
+//
+//		model.addAttribute("mesUtilisateurs", utilisateurs);
+//
+//		return "login";
+//	}
+	
+	@PostMapping("/sinscrire")
+	public String sinscrire(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
+		if(result.hasErrors()) {
+			return "login";
+		}
+		
+		utilisateurRepo.save(utilisateur);
 
-		model.addAttribute("mesUtilisateurs", utilisateurs);
+		return "redirect:/home";
+	}
+	
+	@PostMapping("/sidentifier")
+	public String sidentifier(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
+		if(result.hasErrors()) {
+			return "login";
+		}
+		
+		//insérer ici ce qu'il faut pour récupérer compte
 
 		return "login/list";
+		return "redirect:/home";
 	}
 
 }
