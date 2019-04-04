@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html">
+<head>
+<meta charset="UTF-8">
+<title>Elève</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div id="eleveEdit" class="card">
+			<form th:action="@{/eleve/save}" method="post">
+				<input type="hidden" name="id" th:value="${monEleve.id}"> <input
+					type="hidden" name="version" th:value="${monEleve.version}">
+				<div class="card-header">
+					<h5>Edition de l'élève</h5>
+				</div>
+				<div class="card-body">
+
+					<div class="form-group">
+						<label for="civilite">Civilité:</label> <input type="text"
+							class="form-control" id="civilite" name="civilite"
+							th:value="${monEleve.civilite}"><small
+							class="form-text text-danger" th:errors="${monEleve.civilite}"></small>
+					</div>
+					<div class="form-group">
+						<label for="nom">Nom:</label> <input type="text"
+							class="form-control" id="nom" name="nom"
+							th:value="${monEleve.nom}"> <small
+							class="form-text text-danger" th:errors="${monEleve.nom}"></small>
+					</div>
+					<div class="form-group">
+						"" <label for="prenom">Prénom:</label> <input type="text"
+							class="form-control" id="prenom" name="prenom"
+							th:value="${monEleve.prenom}"> <small
+							class="form-text text-danger" th:errors="${monEleve.prenom}"></small>
+					</div>
+					<div class="form-group">
+						<label for="rue">Rue:</label> <input type="text"
+							class="form-control" id="rue" name="adr.rue"
+							th:value=${monEleve?.adr?.rue}> <small
+							class="form-text text-danger" th:errors="${monEleve.adr.rue}"></small>
+					</div>
+					<div class="form-group">
+						<label for="codePostal">Code postal:</label> <input type="text"
+							class="form-control" id="codePostal" name="adr.codePostal"
+							th:value="${monEleve?.adr?.codePostal}"> <small
+							class="form-text text-danger" th:errors="${monEleve.adr.codePostal}"></small>
+					</div>
+					<div class="form-group">
+						<label for="ville">Ville:</label> <input type="text"
+							class="form-control" id="ville" name="adr.ville"
+							th:value="${monEleve?.adr?.ville}"> <small
+							class="form-text text-danger" th:errors="${monEleve.adr.ville}"></small>
+					</div>
+					<div class="form-group">
+						<label for="age">Age:</label> <input type="number"
+							class="form-control" id="age" name="age"
+							th:value="${monEleve.age}"> <small
+							class="form-text text-danger" th:errors="${monEleve.age}"></small>
+					</div>
+					<div class="form-group">
+						<label for="dtNaissance">Date de naissance:</label> <input
+							type="date" class="form-control" id="dtNaissance"
+							name="dtNaissance" th:value="${monEleve.dtNaissance}"> <small
+							class="form-text text-danger" th:errors="${monEleve.dtNaissance}"></small>
+					</div>
+
+				</div>
+				<div class="card-footer text-right">
+					<div class="btn-group ">
+						<button type="submit" class="btn btn-success">
+							<i class="far fa-check-square fa-2x"></i>
+						</button>
+						<a th:href="@{/eleve/cancel}" class="btn btn-warning text-white">
+							<i class="far fa-window-close fa-2x"></i>
+						</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
