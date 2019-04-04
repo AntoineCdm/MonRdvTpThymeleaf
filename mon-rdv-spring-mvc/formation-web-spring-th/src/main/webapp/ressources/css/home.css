@@ -1,0 +1,31 @@
+/*search box css start here*/
+.jumbotron {
+	background-color: #007bff !important;
+	height: 600px;
+	align-items: center;
+
+}
+
+navbar-title {
+	font-family: Georgia, serif, italic;
+	font-weight: light;
+}
+
+.container {
+	display: flex;
+}
+
+title-font {
+	font-weight: bold;
+	font-size: 20px
+}
+
+text-font {
+	font-weight: bold;
+	font-size: 14px
+}
+
+.search {
+	height:300px;
+	vertical-align: middle;
+}
