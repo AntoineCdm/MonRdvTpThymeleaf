@@ -68,14 +68,7 @@ public class LoginController {
 			if (utilisateur.getUsername().contentEquals(user.getUsername())
 					&& utilisateur.getMdp().contentEquals(user.getMdp())) {
 
-				session.setAttribute("type", "admin");
-
-			System.out.println(user.getUsername());
-			System.out.println(utilisateur.getUsername());
-			System.out.println(user.getMdp());
-			System.out.println(utilisateur.getMdp());
-			
-			if(utilisateur.getUsername() == user.getUsername() && utilisateur.getMdp() == user.getMdp()) {
+		
 				session.setAttribute("type", user.getType());
 				session.setAttribute("username", user.getUsername());
 				session.setMaxInactiveInterval(600);
