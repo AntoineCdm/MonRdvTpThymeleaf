@@ -11,7 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
-import javax.validation.contraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Patient {
@@ -21,16 +22,16 @@ public class Patient {
 	@Version
 	private int version;
 	@Column(length = 100)
-	@NotEmpty(message="Le nom est obligatoire")
+	@NotEmpty(message="Veuillez renseigner votre nom")
+	@Size(min = 3, max=40, message="L'intitule doit comprendre au minimum 3 caractères (100 max)")
 	private String nom;
 	@Column(length = 100)
-	@NotEmpty(message="Le nom est obligatoire")
-	@Size(min = 3, max=100, message="L'intitule doit comprendre au minimum 3 caractères (100 max)")
+	@NotEmpty(message="Veuillez renseigner votre prenom")
+	@Size(min = 3, max=40, message="L'intitule doit comprendre au minimum 3 caractères (100 max)")
 	private String prenom;
 	private int age;
 	@Column(length = 255)
 	@NotEmpty(message="Champ requis")
-	@Size(min = 3, max=100, message="L'intitule doit comprendre au minimum 3 caractères (100 max)")
 	private String mail;
 	@Column(length = 20)
 	private String tel;
