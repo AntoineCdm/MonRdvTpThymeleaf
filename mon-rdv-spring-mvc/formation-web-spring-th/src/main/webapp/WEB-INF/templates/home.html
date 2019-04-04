@@ -18,33 +18,37 @@
 <title>Accueil</title>
 </head>
 <body>
-	<div class="jumbotron">
-		<h1 class="display-4 mt-5">Bonjour et bienvenue sur Mon-rdv !</h1>
+	<section layout:fragment="content" class="mt-5">
+		<div class="jumbotron">
+			<h1 class="display-4 mt-5">Bonjour et bienvenue sur Mon-rdv !</h1>
 
-		<p class="lead">L'application pour prendre rendez-vous avec votre
-			praticien en toute simplicité :)</p>
+			<p class="lead">L'application pour prendre rendez-vous avec votre
+				praticien en toute simplicité :)</p>
 
-		<div class="row justify-content-md-center search align-items-center">
-			<form action="#" method="post" novalidate="novalidate">
-				<div class="row justify-content-md-center">
-					<div class="col-sm">
-						<input type="text" class="form-control search-slt"
-							placeholder="Nom">
+			<div class="row justify-content-md-center search align-items-center">
+				<form action="#" method="post" novalidate="novalidate">
+					<div class="row justify-content-md-center">
+						<div class="col-sm">
+							<input type="text" class="form-control search-slt"
+								placeholder="Nom">
+						</div>
+						<div class="col-sm">
+							<input type="text" class="form-control search-slt"
+								placeholder="Specialité">
+						</div>
+						<div class="col-sm">
+							<input type="text" class="form-control search-slt"
+								placeholder="Lieu">
+						</div>
+						<div class="col-sm">
+							<a th:href="@{/pratician-list}" class="btn btn-primary bg-danger">
+								Rechercher </a>
+
+						</div>
 					</div>
-					<div class="col-sm">
-						<input type="text" class="form-control search-slt"
-							placeholder="Specialité">
-					</div>
-					<div class="col-sm">
-						<input type="text" class="form-control search-slt"
-							placeholder="Lieu">
-					</div>
-					<div class="col-sm">
-						<button type="button" class="btn btn-danger wrn-btn">Rechercher</button>
-					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
-	</div>
+	</section>
 </body>
 </html>

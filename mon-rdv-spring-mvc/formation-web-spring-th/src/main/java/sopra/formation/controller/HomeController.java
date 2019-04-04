@@ -23,18 +23,25 @@ public class HomeController {
 		return "redirect:/home";
 	}
 	
-	@GetMapping(path = { "/", "/home" })
+	@GetMapping(path = {"/home" })
 	public String home(Model model) {
 
 		return "home";
 	}
 	
 	@GetMapping("pratician-list")
-	public String getPraticien(Model model) {
+	public String searchPraticien(Model model) {
 		
+		List<Praticien> praticiens_tmp = praticienRepo.findAll();
 		List<Praticien> praticiens = praticienRepo.findAll();
-
+		
+		for( Praticien praticien: praticiens_tmp) {
+			if(praticien.getNom().matches("(.*)Caumes(.*)"));
+			praticiens.add(praticien);
+		}
+		
 		model.addAttribute("mesPraticiens", praticiens);
+
 
 
 		return "/search-pratician/pratician-list";
