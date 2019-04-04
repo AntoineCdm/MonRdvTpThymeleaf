@@ -25,25 +25,36 @@
 					<h3>Vous êtes nouveau ?</h3>
 					<form th:action="@{/login/sinscrire}" method="post">
 						<div class="form-group">
-						<label for="nom">Entrez votre nom d'utilisateur :</label> <input type="text"
-							class="form-control" id="username" name="username"
-							th:value="${monUtilisateur.username}"> <small
-							class="form-text text-danger" th:errors="${monUtilisateur.username}"></small>
-					</div>
-<!-- 						<div class="form-group"> -->
-<!-- 							Confirmez votre nom d'utilisateur : <input type="text" class="form-control" -->
-<!-- 								placeholder="" id="username2" name="username2" value="" /> -->
-<!-- 						</div> -->
+							<label for="nom">Entrez votre nom d'utilisateur :</label> <input
+								type="text" class="form-control" id="username" name="username"
+								th:value="${monUtilisateur.username}"> <small
+								class="form-text text-danger"
+								th:errors="${monUtilisateur.username}"></small>
+						</div>
+						<!-- 						<div class="form-group"> -->
+						<!-- 							Confirmez votre nom d'utilisateur : <input type="text" class="form-control" -->
+						<!-- 								placeholder="" id="username2" name="username2" value="" /> -->
+						<!-- 						</div> -->
 						<div class="form-group">
-						<label for="nom">Entrez votre mot de passe :</label> <input type="text"
-							class="form-control" id="mdp" name="mdp"
-							th:value="${monUtilisateur.mdp}"> <small
-							class="form-text text-danger" th:errors="${monUtilisateur.mdp}"></small>
-					</div>
-<!-- 						<div class="form-group"> -->
-<!-- 							Confirmez votre mot de passe : <input type="text" class="form-control" -->
-<!-- 								placeholder="" id="mdp2" name="mdp2" value="" /> -->
-<!-- 						</div> -->
+							<label for="nom">Entrez votre mot de passe :</label> <input
+								type="text" class="form-control" id="mdp" name="mdp"
+								th:value="${monUtilisateur.mdp}"> <small
+								class="form-text text-danger" th:errors="${monUtilisateur.mdp}"></small>
+						</div>
+						<!-- 						<div class="form-group"> -->
+						<!-- 							Confirmez votre mot de passe : <input type="text" class="form-control" -->
+						<!-- 								placeholder="" id="mdp2" name="mdp2" value="" /> -->
+						<!-- 						</div> -->
+
+						<div class="form-group">
+							<label for="type">Type d'utilisateur :</label> <select id="type" name="type"
+								class="form-control">
+								<option value="">--Veuillez choisir une option--</option>
+								<option value="PATIENT">Patient</option>
+								<option value="PRATICIEN">Praticien</option>
+							</select> <small class="form-text text-danger"
+								th:errors="${monUtilisateur.type}"></small>
+						</div>
 						<div class="mt-5">
 							<input type="checkbox" id="cdt-general" name="cdt-general"><span
 								class="cg ml-2">J'accepte les conditions générales
@@ -52,9 +63,9 @@
 						<div class="form-group mt-2">
 							<input type="submit" class="btnSubmit" value="S'inscrire" />
 						</div>
-<!-- <button type="submit" class="btn btn-success"> -->
-<!-- 							<i class="far fa-check-square fa-2x"></i> -->
-<!-- 						</button> -->
+						<!-- <button type="submit" class="btn btn-success"> -->
+						<!-- 							<i class="far fa-check-square fa-2x"></i> -->
+						<!-- 						</button> -->
 						<div class="form-group">
 							<a href="#" class="ForgetPwd">Mot de passe oublié?</a>
 						</div>
@@ -64,12 +75,13 @@
 					<h3>Mon compte</h3>
 					<form th:action="@{/login/sidentifier}" method="post">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Identifiant" name="username"
-								 th:value="${monUtilisateur.username}"/>
+							<input type="text" class="form-control" placeholder="Identifiant"
+								name="username" th:value="${monUtilisateur.username}" />
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control"
-								placeholder="Mot de Passe" name="mdp" th:value="${monUtilisateur.mdp}"/>
+								placeholder="Mot de Passe" name="mdp"
+								th:value="${monUtilisateur.mdp}" />
 						</div>
 						<div class="form-group">
 							<input type="submit" class="btnSubmit" value="S'identifier" />
