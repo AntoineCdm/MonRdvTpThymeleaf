@@ -22,10 +22,11 @@ public class Utilisateur {
 	@Version
 	private int version;
 	@Column(length = 30)
-	@NotEmpty
+	@NotEmpty(message="Le nom d'utilisateur doit être renseigné.")
 	private String username;
 	@Column(length = 30)
-	@NotEmpty
+	@NotEmpty(message="Le mot de passe doit être renseigné.")
+	//Il faudrait pouvoir faire un message d'erreur unique pour dire que l'un et/ou l'autre ne sont pas bons.
 	private String mdp;
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)

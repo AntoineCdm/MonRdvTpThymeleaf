@@ -1,6 +1,6 @@
 package sopra.formation.controller;
 
-import java.io.Console;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -50,7 +50,7 @@ public class LoginController {
 	public String sinscrire(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
 		
 		if(result.hasErrors()) {
-			return "login";
+			return "login/list";
 		}
 
 		utilisateurRepo.save(utilisateur);
