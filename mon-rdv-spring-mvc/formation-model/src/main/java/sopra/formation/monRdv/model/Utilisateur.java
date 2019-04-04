@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Utilisateur {
@@ -21,8 +22,10 @@ public class Utilisateur {
 	@Version
 	private int version;
 	@Column(length = 30)
+	@NotEmpty
 	private String username;
 	@Column(length = 30)
+	@NotEmpty
 	private String mdp;
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)

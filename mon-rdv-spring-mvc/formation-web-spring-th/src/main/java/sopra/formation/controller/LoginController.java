@@ -1,5 +1,4 @@
 package sopra.formation.controller;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -30,15 +29,15 @@ public class LoginController {
 	
 	@GetMapping(path = { "/", "/list" })
 	public String list(Model model) {
-		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-
-		model.addAttribute("mesUtilisateurs", utilisateurs);
+	
+		model.addAttribute("monUtilisateur", new Utilisateur());
 
 		return "login/list";
 	}
 	
 	@PostMapping("/sinscrire")
 	public String sinscrire(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
+		
 		if(result.hasErrors()) {
 			return "login";
 		}
