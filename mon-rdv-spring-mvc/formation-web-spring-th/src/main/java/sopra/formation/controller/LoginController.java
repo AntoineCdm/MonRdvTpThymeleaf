@@ -30,7 +30,7 @@ public class LoginController {
 
 		model.addAttribute("mesUtilisateurs", utilisateurs);
 
-		return "matiere/list";
+		return "login";
 	}
 
 }
