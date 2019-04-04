@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,17 +30,17 @@ public class LoginController {
 	
 	@GetMapping("")
 	public String defaut() {
-		return "redirect:/login";
+		return "redirect:/login/list";
 	}
 	
-//	@GetMapping(path = { "/", "/list" })
-//	public String list(Model model) {
-//		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-//
-//		model.addAttribute("mesUtilisateurs", utilisateurs);
-//
-//		return "login";
-//	}
+	@GetMapping(path = { "/", "/list" })
+	public String list(Model model) {
+		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
+
+		model.addAttribute("mesUtilisateurs", utilisateurs);
+
+		return "login/list";
+	}
 	
 	@PostMapping("/sinscrire")
 	public String sinscrire(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
@@ -59,6 +61,7 @@ public class LoginController {
 		
 		
 
+		
 		return "redirect:/home";
 	}
 
