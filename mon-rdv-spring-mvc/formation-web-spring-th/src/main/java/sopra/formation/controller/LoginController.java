@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.HttpServletBean;
 
 import sopra.formation.monRdv.model.Utilisateur;
 import sopra.formation.monRdv.repository.IUtilisateur;
@@ -55,7 +57,7 @@ public class LoginController {
 			return "login";
 		}
 		
-		//insérer ici ce qu'il faut pour récupérer compte
+		
 
 		return "redirect:/home";
 	}
