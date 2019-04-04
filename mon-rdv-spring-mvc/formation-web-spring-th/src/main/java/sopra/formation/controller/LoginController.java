@@ -32,9 +32,7 @@ public class LoginController {
 
 	@GetMapping(path = { "/", "/list" })
 	public String list(Model model) {
-		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-
-		model.addAttribute("mesUtilisateurs", utilisateurs);
+		model.addAttribute("monUtilisateur", new Utilisateur());
 
 		return "login/list";
 	}
@@ -51,16 +49,15 @@ public class LoginController {
 	}
 
 	@PostMapping("/sidentifier")
-	public String sidentifier(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result, HttpSession session) {
+	public String sidentifier(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result,
+			HttpSession session) {
 		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-		
+
 		for (Utilisateur user : utilisateurs) {
-			System.out.println(user.getUsername());
-			System.out.println(utilisateur.getUsername());
-			System.out.println(user.getMdp());
-			System.out.println(utilisateur.getMdp());
-			
-			if(utilisateur.getUsername() == user.getUsername() && utilisateur.getMdp() == user.getMdp()) {
+
+			if (utilisateur.getUsername().contentEquals(user.getUsername())
+					&& utilisateur.getMdp().contentEquals(user.getMdp())) {
+
 				session.setAttribute("type", "admin");
 
 				return "redirect:/home";
@@ -68,7 +65,7 @@ public class LoginController {
 		}
 
 		return "login/list";
-		
+
 	}
 
 }
