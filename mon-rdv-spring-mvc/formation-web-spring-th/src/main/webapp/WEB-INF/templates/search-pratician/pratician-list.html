@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <link rel="stylesheet" type="text/css"
@@ -13,47 +15,58 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <link rel="shortcut icon" type="image/png"
 	href="images/icon-mon-rdv.png" />
-<title>Sélection Praticien</title>
+<title>SÃ©lection Praticien</title>
 </head>
 <body>
+	<section layout:fragment="content" class="mt-5">
+		<div class="d-flex flex-column mb-3">
 
-	<div class="d-flex flex-column mb-3">
+			<nav
+				class="navbar mb-5 navbar-title navbar-light bg-light navbar-expand-md fixed-top">
+				<!-- Brand/logo -->
+				<a class="navbar-brand" href="/home"> <img
+					src="images/icon-mon-rdv.png" width="30" height="30"
+					class="d-inline-block align-top" alt=""> Mon-rdv
+				</a>
 
-		<nav
-			class="navbar mb-5 navbar-title navbar-light bg-light navbar-expand-md fixed-top">
-			<!-- Brand/logo -->
-			<a class="navbar-brand" href="/home"> <img
-				src="images/icon-mon-rdv.png" width="30" height="30"
-				class="d-inline-block align-top" alt=""> Mon-rdv
-			</a>
+				<!-- Links -->
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="Login.html"><b>Connexion</b></a></li>
+				</ul>
+			</nav>
 
-			<!-- Links -->
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item"><a class="nav-link" href="Login.html"><b>Connexion</b></a></li>
-			</ul>
-		</nav>
+			<div style="height: 50px"></div>
 
-		<div class="md-8 mt-5 justify-content-md-center">
-			<div class="col-md-6 offset-md-3 card">
-				<div class="card-header bg-light text-dark">
-					<h2>Liste des praticiens</h2>
-				</div>
-				<div class="card-body">
-					<table id="praticienTab" class="table table-striped">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Nom</th>
-								<th>Specialité</th>
-								<th>Lieu</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
+
+			<div class="md-8 mt-5 justify-content-md-center">
+				<div class="col-md-6 offset-md-3 card">
+					<div class="card-header bg-light text-dark">
+						<h2>Liste des praticiens</h2>
+					</div>
+					<div class="card-body">
+						<table id="praticienTab" class="table table-striped">
+							<thead>
+								<tr>
+									<th>Nom</th>
+									<th>PrÃ©nom</th>
+									<th>Mail</th>
+									<th>Tel</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="praticien : ${praticiens}">
+									<td th:text="${praticien.id}"></td>
+									<td>[[${praticien.nom}]]</td>
+									<td>[[${formation.prenom}]]</td>
+									<td>[[${formation.mail}]]</td>
+									<td>[[${formation.tel}]]</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 </body>
 </html>
