@@ -4,6 +4,8 @@ package sopra.formation.controller;
 
 import javax.validation.Valid;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -26,17 +28,21 @@ public class LoginController {
 	
 	@GetMapping("")
 	public String defaut() {
+<<<<<<< HEAD
 		return "redirect:/login/login";
+=======
+		return "redirect:/login/list";
+>>>>>>> master
 	}
 	
-//	@GetMapping(path = { "/", "/list" })
-//	public String list(Model model) {
-//		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-//
-//		model.addAttribute("mesUtilisateurs", utilisateurs);
-//
-//		return "login";
-//	}
+	@GetMapping(path = { "/", "/list" })
+	public String list(Model model) {
+		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
+
+		model.addAttribute("mesUtilisateurs", utilisateurs);
+
+		return "login/list";
+	}
 	
 	@PostMapping("/sinscrire")
 	public String sinscrire(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
@@ -57,6 +63,7 @@ public class LoginController {
 		
 		//insérer ici ce qu'il faut pour récupérer compte
 
+		
 		return "redirect:/home";
 	}
 
