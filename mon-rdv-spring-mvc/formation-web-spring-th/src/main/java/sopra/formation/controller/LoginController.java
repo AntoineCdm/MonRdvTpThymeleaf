@@ -32,6 +32,7 @@ public class LoginController {
 
 	@GetMapping(path = { "/", "/list" })
 	public String list(Model model) {
+	
 		model.addAttribute("monUtilisateur", new Utilisateur());
 
 		return "login/list";
@@ -47,7 +48,8 @@ public class LoginController {
 	
 	@PostMapping("/sinscrire")
 	public String sinscrire(@Valid @ModelAttribute("monUtilisateur") Utilisateur utilisateur, BindingResult result) {
-		if (result.hasErrors()) {
+		
+		if(result.hasErrors()) {
 			return "login";
 		}
 
