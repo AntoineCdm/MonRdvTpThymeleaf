@@ -2,9 +2,8 @@ package sopra.formation.controller;
 
 
 
+import javax.servlet.http.Cookie;
 import javax.validation.Valid;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +60,7 @@ public class LoginController {
 			return "login/login";
 		}
 		
-		//insérer ici ce qu'il faut pour récupérer compte
+		Cookie cookie = new Cookie("type", utilisateur.getType().toString());
 
 		
 		return "redirect:/home";
