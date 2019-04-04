@@ -13,69 +13,69 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import sopra.formation.monRdv.model.Patient;
-import sopra.formation.monRdv.repository.IPatient;
+import sopra.formation.monRdv.model.Praticien;
+import sopra.formation.monRdv.repository.IPraticien;
 
 	@Controller
-	@RequestMapping("/patient")
-	public class PatientController {
+	@RequestMapping("/praticien")
+	public class PraticienController {
 
 		@Autowired
-		private IPatient patientRepo;
+		private IPraticien praticienRepo;
 
 		@GetMapping("")
 		public String defaut() {
-			return "redirect:/patient/list";
+			return "redirect:/praticien/list";
 		}
 
 		@GetMapping(path = { "/", "/list" })
 		public String list(Model model) {
-			List<Patient> patients = patientRepo.findAll();
+			List<Praticien> praticiens = praticienRepo.findAll();
 
-			model.addAttribute("mesPatients", patients);
+			model.addAttribute("mesPraticiens", praticiens);
 
-			return "patient/list";
+			return "praticien/list";
 		}
 
 		@GetMapping("/add")
 		public String add(Model model) {
-			model.addAttribute("monPatient", new Patient());
+			model.addAttribute("monPraticien", new Praticien());
 
-			return "patient/form";
+			return "praticien/form";
 		}
 
 		@GetMapping("/edit")
 		public String edit(@RequestParam("id") Long id, Model model) {
-			Optional<Patient> opt = patientRepo.findById(id);
+			Optional<Praticien> opt = praticienRepo.findById(id);
 
 			if (opt.isPresent()) {
-				model.addAttribute("monPatient", opt.get());
+				model.addAttribute("monPraticien", opt.get());
 			}
 
-			return "patient/form";
+			return "praticien/form";
 		}
 
 		@PostMapping("/save")
-		public String save(@Valid @ModelAttribute("monPatient") Patient patient, BindingResult result) {
+		public String save(@Valid @ModelAttribute("monPraticien") Praticien praticien, BindingResult result) {
 			if (result.hasErrors()) {
-				return "patient/form";
+				return "praticien/form";
 			}
 
-			patientRepo.save(patient);
+			praticienRepo.save(praticien);
 
-			return "redirect:/patient/list";
+			return "redirect:/praticien/list";
 		}
 
 		@GetMapping("/remove")
 		public String remove(@RequestParam("id") Long id) {
-			patientRepo.deleteById(id);
+			praticienRepo.deleteById(id);
 
-			return "forward:/matiere/list";
+			return "forward:/praticien/list";
 		}
 
 		@GetMapping("/cancel")
 		public String cancel() {
 
-			return "forward:/matiere/list";
+			return "forward:/praticien/list";
 		}
 }
