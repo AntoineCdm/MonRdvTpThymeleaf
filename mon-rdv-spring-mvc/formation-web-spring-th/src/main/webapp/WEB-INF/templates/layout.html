@@ -31,7 +31,7 @@
 					href="PraticienProfil.html">Espace Praticien</a></b></li>
 				<li class="nav-item"><b><a class="nav-link"
 					href="PatientRdvVenir.html" >Espace Patient</a></b></li>
-				<li class="nav-item"><b><a class="nav-link" th:href="${(session?.type=='admin')?'login/logout':'login'}" th:text="${(session?.type=='admin')?'Deconnexion':'Connexion'}"></a></b></li>
+				<li class="nav-item"><b><a class="nav-link" th:href="${(session?.type!=null)?'login/logout':'login'}" th:text="${(session?.type!=null)?'Deconnexion':'Connexion'}"></a></b></li>
 			</ul>
 		</nav>
 	</header>
